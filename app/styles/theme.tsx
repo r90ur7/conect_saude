@@ -1,6 +1,6 @@
 import { createSystem, defaultConfig } from "@chakra-ui/react"
 
-export const system = createSystem(defaultConfig, {
+export const theme = createSystem(defaultConfig, {
     theme: {
         tokens: {
             colors: {
@@ -12,7 +12,7 @@ export const system = createSystem(defaultConfig, {
                     light: { value: "#F5FFFE" },
                     dark: { value: "#156665" }, 
                 },
-                whites: {
+                light: {
                     basic: { value: "#FFFFFF" },
                     pearl: { value: "#F8F9FA" },
                     snow: { value: "#F5F6F8" },

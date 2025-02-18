@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-"use client";
-
 import { useState } from "react";
 import {
     Tabs,
@@ -16,6 +13,7 @@ import {
 import { useForm } from "react-hook-form";
 import { FaUser, FaEnvelope, FaLock, FaStethoscope } from "react-icons/fa";
 import { toaster } from "@/components/ui/toaster";
+import { CategoryEnum, categories } from "@/lib/data";
 
 // Define the form data types
 interface UserFormData {
@@ -247,7 +245,7 @@ export default function RegisterTabs({
 
                 {/* Aba de Profissional */}
                 <Tabs.Content value="profissional">
-                    <Field.Root onSubmit={handleSubmitPro(onSubmitPro)}>
+                    <form onSubmit={handleSubmitPro(onSubmitPro)}>
                         <VStack m={4}>
                             {/* Nome */}
                             <Field.Root invalid={!!errorsPro.name}>
@@ -293,7 +291,6 @@ export default function RegisterTabs({
                                     </Field.ErrorText>
                                 )}
                             </Field.Root>
-
                             {/* Senha */}
                             <Field.Root invalid={!!errorsPro.password}>
                                 <Field.Label color="white">
@@ -327,17 +324,16 @@ export default function RegisterTabs({
                                     <NativeSelect.Field
                                         placeholder="Selecione sua especialidade"
                                         {...registerPro("category")}
-                                        // items={[
-                                        //     "Cardiologia",
-                                        //     "Dermatologia",
-                                        //     "Pediatria",
-                                        //     "Outras",
-                                        // ]}
-                                        // focusBorderColor="brand.400"
                                         bg="gray.700"
                                         color="white"
                                         borderColor="gray.600"
-                                    />
+                                    >
+                                        {categories.map((category) => (
+                                            <option key={category.id} value={category.id}>
+                                                {category.name}
+                                            </option>
+                                        ))}
+                                    </NativeSelect.Field>
                                 </NativeSelect.Root>
                                 {errorsPro.category && (
                                     <Field.ErrorText color="red.300">
@@ -359,7 +355,7 @@ export default function RegisterTabs({
                                 Criar Conta de Profissional
                             </Button>
                         </VStack>
-                    </Field.Root>
+                    </form>
                 </Tabs.Content>
             </Tabs.Root>
         </Box>

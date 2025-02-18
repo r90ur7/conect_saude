@@ -9,25 +9,17 @@ import {
   SimpleGrid,
   Image,
   VStack,
-  HStack,
   Icon,
   Button,
-  Flex,
 } from "@chakra-ui/react"
 import Navbar from "@/components/navbar"
-import { categories, CategoryEnum } from "@/lib/data"
-import { useState } from "react"
 import { LuHeart, LuStethoscope, LuUsers } from "react-icons/lu"
-import ProfessionalGridDynamic from "@/components/professional-grid-dynamic"
 
 export default function Home() {
-  const [selectedCategory, setSelectedCategory] = useState<CategoryEnum>(CategoryEnum.TODAS)
 
   return (
     <Box minH="100vh" bg="white">
-      {/* Navbar */}
       <Navbar />
-
       {/* HERO SECTION */}
       <Box
         position="relative"
@@ -57,7 +49,7 @@ export default function Home() {
                 Conectando você aos melhores profissionais de saúde
               </Heading>
               <Text fontSize={{ base: "md", md: "xl" }} maxW="500px">
-                Encontre especialistas qualificados perto de você e agende sua consulta de forma rápida e fácil.
+                Encontre especialistas qualificados perto de você e agende  de forma rápida e fácil.
               </Text>
               <Button
                 size="lg"
@@ -85,78 +77,6 @@ export default function Home() {
           </SimpleGrid>
         </Container>
       </Box>
-
-      {/* STATS SECTION */}
-      <Container maxW="container.xl" py={{ base: 10, md: 16 }}>
-        <SimpleGrid columns={{ base: 1, md: 3 }} m={8}>
-          {[
-            { icon: LuUsers, title: "+1000", desc: "Profissionais cadastrados" },
-            { icon: LuHeart, title: "+5000", desc: "Pacientes atendidos" },
-            { icon: LuStethoscope, title: "+20", desc: "Especialidades" },
-          ].map((stat, idx) => (
-            <VStack
-              key={idx}
-              p={8}
-              bg="gray.50"
-              borderRadius="xl"
-              boxShadow="md"
-              align="center"
-              m={4}
-            >
-              <Icon as={stat.icon} boxSize={12} color="brand.primary" />
-              <Heading size="xl" color="brand.primary">
-                {stat.title}
-              </Heading>
-              <Text color="gray.700" textAlign="center" fontSize="lg">
-                {stat.desc}
-              </Text>
-            </VStack>
-          ))}
-        </SimpleGrid>
-      </Container>
-
-      {/* PROFESSIONALS SECTION (Para clientes) */}
-      <Container bg="gray.50" maxW="full">
-
-        <Container maxW="container.xl" py={{ base: 10, md: 16 }}>
-          <VStack m={8}>
-            <Box textAlign="center" maxW="700px">
-              <Heading color="brand.primary" mb={4} fontSize={{ base: "2xl", md: "3xl" }}>
-                Nossos Profissionais
-              </Heading>
-              <Text color="gray.600" fontSize={{ base: "md", md: "lg" }}>
-                Escolha entre diversas especialidades e encontre o profissional ideal para você.
-              </Text>
-            </Box>
-            <Flex py={4} px={2} m={4} display="flex" flexDirection="column" alignItems="center" justifyContent="center" alignContent="center" flexWrap="wrap" w="full">
-              <HStack overflowX="auto" py={4} px={2} m={4}>
-                {categories.map((category) => (
-                  <Box
-                    key={category.id}
-                    px={6}
-                    py={2}
-                    borderRadius="full"
-                    bg={selectedCategory === category.id ? "brand.primary" : "gray.100"}
-                    color={selectedCategory === category.id ? "white" : "brand.primary"}
-                    cursor="pointer"
-                    onClick={() => setSelectedCategory(category.id as CategoryEnum)}
-                    transition="all 0.2s"
-                    whiteSpace="nowrap"
-                    _hover={{
-                      bg: selectedCategory === category.id ? "brand.primary" : "gray.200",
-                    }}
-                  >
-                    {category.name}
-                  </Box>
-                ))}
-              </HStack>
-              <Box mt={8}>
-                <ProfessionalGridDynamic selectedCategory={selectedCategory} />
-              </Box>
-            </Flex>
-          </VStack>
-        </Container>
-      </Container>
       {/* SEÇÃO PARA PROFISSIONAIS */}
       <Container maxW="container.xl" py={{ base: 10, md: 16 }}>
         <VStack m={8}>

@@ -73,10 +73,6 @@ export default function DashboardPage() {
     };
 
     // Variáveis para cores
-    const bgGradient = useColorModeValue(
-        "linear(to-br, teal.100, blue.200)",
-        "linear(to-br, teal.900, blue.800)"
-    );
     const sidebarBg = useColorModeValue("brand.primary", "brand.dark");
     const cardBg = useColorModeValue("white", "gray.800");
     const paginationBg = useColorModeValue("#ebf8ff", "#2a4365");
@@ -185,12 +181,13 @@ export default function DashboardPage() {
                                 <Group>
                                     <InputGroup flex="1" startElement={<FaSearch />}>
                                         <Input
+                                            size="lg"
                                             placeholder="Buscar por nome, especialidade ou localização..."
                                             value={searchTerm}
                                             onChange={(e) => setSearchTerm(e.target.value)}
                                             bg="gray.50"
                                             borderRadius="md"
-                                            _placeholder={{ color: "gray.500" }}
+                                            _placeholder={{ color: "gray.500", fontSize:"15px" }}
                                             _hover={{ bg: "gray.100", borderColor: "blue.300" }}
                                             _focus={{ bg: "white", borderColor: "blue.400", boxShadow: "outline" }}
                                         />

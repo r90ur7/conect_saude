@@ -2,7 +2,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import { ChakraProvider } from "@chakra-ui/react"
 import { ThemeProvider } from "next-themes"
-import "./globals.css";
+import './styles/globals.css'
 import { theme } from "./styles/theme";
 
 const geistSans = Geist({

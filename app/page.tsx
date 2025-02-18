@@ -18,7 +18,7 @@ import Navbar from "@/components/navbar"
 import { categories, CategoryEnum } from "@/lib/data"
 import { useState } from "react"
 import { LuHeart, LuStethoscope, LuUsers } from "react-icons/lu"
-// import ProfessionalGridDynamic from "@/components/professional-grid-dynamic"
+import ProfessionalGridDynamic from "@/components/professional-grid-dynamic"
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<CategoryEnum>(CategoryEnum.TODAS)
@@ -151,7 +151,7 @@ export default function Home() {
                 ))}
               </HStack>
               <Box mt={8}>
-                {/* <ProfessionalGridDynamic selectedCategory={selectedCategory} /> */}
+                <ProfessionalGridDynamic selectedCategory={selectedCategory} />
               </Box>
             </Flex>
           </VStack>

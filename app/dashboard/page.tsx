@@ -77,12 +77,12 @@ export default function DashboardPage() {
         "linear(to-br, teal.100, blue.200)",
         "linear(to-br, teal.900, blue.800)"
     );
-    const sidebarBg = useColorModeValue("brand.primary", "gray.700");
+    const sidebarBg = useColorModeValue("brand.primary", "brand.dark");
     const cardBg = useColorModeValue("white", "gray.800");
     const paginationBg = useColorModeValue("#ebf8ff", "#2a4365");
 
     return (
-        <Box bgGradient="to-r" gradientFrom="gray.50" gradientTo="gray.100"  minH="100vh"  bg={bgGradient} p={4}>
+        <Box bgGradient="to-r" gradientFrom="gray.50" gradientTo="gray.100"  minH="100vh"  p={4}>
             <Box bg={sidebarBg} shadow="md" borderRadius="md" mb={8}>
                 <Navbar />
             </Box>
@@ -99,14 +99,14 @@ export default function DashboardPage() {
                 >
                     <VStack align="stretch" gap={6}>
                         <Box>
-                            <Heading size="sm" color="gray.500" mb={2}>
+                            <Heading size="sm" color="brand.primary" mb={2}>
                                 FILTROS RÁPIDOS
                             </Heading>
                             <VStack align="stretch" gap={2}>
                                 <Button
                                     variant="ghost"
                                     justifyContent="flex-start"
-                                    color="gray.500"
+                                    color="white"
                                     _hover={{ bg: "gray.100" }}
                                     transition="background 0.3s"
                                     onClick={() => {
@@ -120,7 +120,7 @@ export default function DashboardPage() {
                                 <Button
                                     variant="ghost"
                                     justifyContent="flex-start"
-                                    color="gray.700"
+                                    color="white"
                                     _hover={{ bg: "gray.100" }}
                                     transition="background 0.3s"
                                     onClick={() => {
@@ -133,7 +133,7 @@ export default function DashboardPage() {
                             </VStack>
                         </Box>
                         <Box>
-                            <Heading size="sm" color="gray.500" mb={2}>
+                            <Heading size="sm" color="white" mb={2}>
                                 CATEGORIAS
                             </Heading>
                             <VStack align="stretch" gap={2}>
@@ -142,7 +142,7 @@ export default function DashboardPage() {
                                         key={category.id}
                                         variant="ghost"
                                         justifyContent="flex-start"
-                                        color="gray.700"
+                                        color="white"
                                         _hover={{ bg: "gray.100" }}
                                         transition="background 0.3s"
                                         onClick={() => {
@@ -156,13 +156,13 @@ export default function DashboardPage() {
                             </VStack>
                         </Box>
                         <Box>
-                            <Heading size="sm" color="gray.500" mb={2}>
+                            <Heading size="sm" color="white" mb={2}>
                                 INFORMAÇÕES
                             </Heading>
-                            <Text fontSize="sm" color="gray.600">
+                            <Text fontSize="sm" color="white">
                                 Total de profissionais: {professionals.length}
                             </Text>
-                            <Text fontSize="sm" color="gray.600">
+                            <Text fontSize="sm" color="white">
                                 Categorias disponíveis: {categories.length}
                             </Text>
                         </Box>

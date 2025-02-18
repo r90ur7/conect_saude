@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import {
     Tabs,
@@ -13,7 +14,7 @@ import {
 import { useForm } from "react-hook-form";
 import { FaUser, FaEnvelope, FaLock, FaStethoscope } from "react-icons/fa";
 import { toaster } from "@/components/ui/toaster";
-import { CategoryEnum, categories } from "@/lib/data";
+import { categories } from "@/lib/data";
 
 // Define the form data types
 interface UserFormData {

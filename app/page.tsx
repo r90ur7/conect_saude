@@ -23,7 +23,7 @@ export default function Home() {
       <Navbar />
       <Box
         bg={bgColor}
-        py={{ base: 16, md: 28 }}
+        py={{ base: 16, md: 18 }}
         color="white"
       >
         <Box
@@ -33,19 +33,20 @@ export default function Home() {
           zIndex={0}
         />
         <Container maxW="container.xl" position="relative" zIndex={1}>
-          <SimpleGrid columns={{ base: 1, md: 2 }} m={8} alignItems="center">
+          <VStack w={"full"} pl={8} flexDirection={"row-reverse"} justifyContent={"start"} alignItems={"center"} align="center">
+            <Heading color="green.100" fontSize={{ base: "3xl", md: "5xl" }} lineHeight="shorter" marginBottom="4">
+              Connect Saúde
+            </Heading>
+            <Image
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagem%20do%20WhatsApp%20de%202025-02-14%20%C3%A0(s)%2009.46.14_26537de3.jpg-L4LVfevrgLEIqOMNqt0NOSPVQR5W3Q.jpeg"
+              alt="Conect Saúde Logo"
+              w="100px"
+              borderRadius={"full"}
+            />
+          </VStack>
+          <SimpleGrid columns={{ base: 1, md: 2 }} m={8} mt={0} alignItems="center">
             <VStack align="flex-start" m={6}>
-              <VStack flexDirection={"row-reverse"} alignItems={"center"} align="flex-end">
-                <Heading color="green.100" fontSize={{ base: "3xl", md: "5xl" }} lineHeight="shorter">
-                  Connect Sáude
-                </Heading>
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagem%20do%20WhatsApp%20de%202025-02-14%20%C3%A0(s)%2009.46.14_26537de3.jpg-L4LVfevrgLEIqOMNqt0NOSPVQR5W3Q.jpeg"
-                  alt="Conect Saúde Logo"
-                  w="100px"
-                  borderRadius={"full"}
-                />
-              </VStack>
+
               <Heading fontSize={{ base: "3xl", md: "5xl" }} lineHeight="shorter">
                 Conectando você aos melhores profissionais de saúde
               </Heading>

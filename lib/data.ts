@@ -29,6 +29,33 @@ export const categories = [
 
 export const professionals: Professional[] = [
   {
+    id: "16",
+    name: "Loja Ortopédica Euclides",
+    specialty: "Produtos Ortopédicos",
+    location: "Rua Manoel do Conselho Campos 71, Euclides da Cunha-BA",
+    image: "/assets/ClienteRealassets/Foto.jpg",
+    phone: "(75) 99987-5712",
+    category: CategoryEnum.LOJA_ORTOPEDICA,
+    email: "contato@ortopedicaeuclides.com",
+    social: {
+      instagram: "https://instagram.com",
+      facebook: "https://facebook.com",
+    },
+    schedule: [
+      { weekDay: "Segunda a Sexta", hours: "08:00 - 12:00, 14:00 - 17:00" },
+    ],
+    weeklySchedule: [
+      { day: "Segunda a Sexta", activities: "Venda de produtos ortopédicos, Atendimento ao cliente" },
+    ],
+    about: "A Loja Ortopédica Euclides oferece uma ampla variedade de produtos ortopédicos de alta qualidade. Nossa missão é proporcionar conforto e bem-estar aos nossos clientes, com atendimento especializado e produtos de confiança.",
+    education: [
+      "Equipe treinada em produtos ortopédicos",
+      "Certificação de qualidade",
+      "Parceria com fornecedores renomados",
+      "Atendimento personalizado"
+    ]
+  },
+  {
     id: "1",
     name: "Dra. Ana Silva",
     specialty: "Clínica Geral",

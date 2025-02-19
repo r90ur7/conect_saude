@@ -2,23 +2,29 @@ import { Professional } from "@/types/professional";
 
 export enum CategoryEnum {
   TODAS = "todas",
+  LOJA_ORTOPEDICA = " LOJA ORTOPEDICA ",
   CLINICA_MEDICA = "clinica-medica",
-  LABORATORIOS = "laboratorios",
+  CLINICA_ODONTOLOGICA = "clinica-odontologica",
+  CLINICA_OFTALMOLOGICA = "clinica-oftalmologica",
+  LABORATORIO = "laboratorio",
   MEDICOS = "medicos",
-  ESPECIALISTAS = "especialistas",
-  FUNERARIAS = "funerarias",
-  EMERGENCIAS = "emergencias",
+  NUTRICIONISTA = "nutricionista",
+  FISIOTERAPEUTA = "fisioterapeuta",
+  OTICAS = "oticas",
 }
 
 export const categories = [
   { id: CategoryEnum.TODAS, name: "Todas" },
+  { id: CategoryEnum.LOJA_ORTOPEDICA, name: "Loja Ortopédica" },
   { id: CategoryEnum.CLINICA_MEDICA, name: "Clínica Médica" },
-  { id: CategoryEnum.LABORATORIOS, name: "Laboratórios" },
+  { id: CategoryEnum.CLINICA_ODONTOLOGICA, name: "Clínica Odontológica" },
+  { id: CategoryEnum.CLINICA_OFTALMOLOGICA, name: "Clínica Oftalmológica" },
+  { id: CategoryEnum.LABORATORIO, name: "Laboratório" },
   { id: CategoryEnum.MEDICOS, name: "Médicos" },
-  { id: CategoryEnum.ESPECIALISTAS, name: "Especialistas" },
-  { id: CategoryEnum.FUNERARIAS, name: "Funerárias" },
-  { id: CategoryEnum.EMERGENCIAS, name: "Emergências" },
-]
+  { id: CategoryEnum.NUTRICIONISTA, name: "Nutricionista" },
+  { id: CategoryEnum.FISIOTERAPEUTA, name: "Fisioterapeuta" },
+  { id: CategoryEnum.OTICAS, name: "Óticas" },
+];
 
 
 export const professionals: Professional[] = [
@@ -29,7 +35,7 @@ export const professionals: Professional[] = [
     location: "Centro Médico São Paulo",
     image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=400&h=300&fit=crop",
     phone: "(11) 99999-9999",
-    category: "clinica-medica",
+    category: CategoryEnum.CLINICA_MEDICA,
     email: "ana.silva@example.com",
     social: {
       instagram: "https://instagram.com",
@@ -81,7 +87,7 @@ export const professionals: Professional[] = [
     location: "Av. Paulista, 1000",
     image: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?q=80&w=400&h=300&fit=crop",
     phone: "(11) 98888-8888",
-    category: "laboratorios",
+    category: CategoryEnum.LABORATORIO,
     email: "lab.central@example.com",
     social: {
       instagram: "https://instagram.com",
@@ -110,7 +116,7 @@ export const professionals: Professional[] = [
     location: "Hospital Santa Cruz",
     image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=400&h=300&fit=crop",
     phone: "(11) 97777-7777",
-    category: "especialistas",
+    category: CategoryEnum.MEDICOS,
     email: "carlos.santos@example.com",
     social: {
       instagram: "https://instagram.com",

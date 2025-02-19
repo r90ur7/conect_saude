@@ -13,7 +13,7 @@ import {
     Input,
     Group,
 } from "@chakra-ui/react";
-import { FaClock, FaSearch, FaStar, FaUser } from "react-icons/fa";
+import { FaSearch, FaStar, FaUser } from "react-icons/fa";
 import { professionals, categories, CategoryEnum } from "@/lib/data";
 import ProfessionalCard from "@/components/professional-card";
 import Navbar from "@/components/header/navbar";
@@ -76,9 +76,12 @@ export default function DashboardPage() {
     const sidebarBg = useColorModeValue("brand.primary", "brand.dark");
     const cardBg = useColorModeValue("white", "gray.800");
     const paginationBg = useColorModeValue("#ebf8ff", "#2a4365");
+    const backgrounfrom = useColorModeValue("gray.50", "gray.500");
+    const backgrounto = useColorModeValue("gray.100", "gray.900");
+
 
     return (
-        <Box bgGradient="to-r" gradientFrom="gray.50" gradientTo="gray.100" minH="100vh" p={4}>
+        <Box bgGradient="to-r" gradientFrom={backgrounfrom} gradientTo={backgrounto} minH="100vh" p={4}>
             <Box bg={sidebarBg} shadow="md" borderRadius="md" mb={8}>
                 <Navbar />
             </Box>
@@ -95,7 +98,7 @@ export default function DashboardPage() {
                 >
                     <VStack align="stretch" gap={6}>
                         <Box>
-                            <Heading size="sm" color="brand.primary" mb={2}>
+                            <Heading size="sm" color="light.snow" mb={2}>
                                 FILTROS RÁPIDOS
                             </Heading>
                             <VStack align="stretch" gap={2}>
@@ -113,27 +116,14 @@ export default function DashboardPage() {
                                 >
                                     <Icon as={FaStar} mr={2} /> Todos os Profissionais
                                 </Button>
-                                <Button
-                                    variant="ghost"
-                                    justifyContent="flex-start"
-                                    color="white"
-                                    _hover={{ bg: "gray.100" }}
-                                    transition="background 0.3s"
-                                    onClick={() => {
-                                        setSearchTerm("Hoje");
-                                        setCurrentPage(1);
-                                    }}
-                                >
-                                    <Icon as={FaClock} mr={2} /> Disponível Hoje
-                                </Button>
                             </VStack>
                         </Box>
                         <Box>
                             <Heading size="sm" color="white" mb={2}>
-                                CATEGORIAS
+                                Exames
                             </Heading>
                             <VStack align="stretch" gap={2}>
-                                {categories.slice(0, 7).map((category) => (
+                                {categories.slice(1, 11).map((category) => (
                                     <Button
                                         key={category.id}
                                         variant="ghost"

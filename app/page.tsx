@@ -23,7 +23,7 @@ export default function Home() {
       <Navbar />
       <Box
         bg={bgColor}
-        py={{ base: 16, md: 18 }}
+        py={{ base: 16, md: 20 }}
         color="white"
       >
         <Box
@@ -34,7 +34,7 @@ export default function Home() {
         />
         <Container maxW="container.xl" position="relative" zIndex={1}>
           <VStack w={"full"} pl={8} flexDirection={"row-reverse"} justifyContent={"start"} alignItems={"center"} align="center">
-            <Heading color="green.100" fontSize={{ base: "3xl", md: "5xl" }} lineHeight="shorter" marginBottom="4">
+            <Heading color="green.100" fontSize={{ base: "3xl", md: "4xl" }} lineHeight="shorter" marginBottom="4">
               Connect Saúde
             </Heading>
             <Image
@@ -47,7 +47,7 @@ export default function Home() {
           <SimpleGrid columns={{ base: 1, md: 2 }} m={8} mt={0} alignItems="center">
             <VStack align="flex-start" m={6}>
 
-              <Heading fontSize={{ base: "3xl", md: "5xl" }} lineHeight="shorter">
+              <Heading fontSize={{ base: "3xl", md: "3xl" }} lineHeight="shorter">
                 Conectando você aos melhores profissionais de saúde
               </Heading>
               <Text fontSize={{ base: "md", md: "xl" }} maxW="500px">

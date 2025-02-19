@@ -9,7 +9,6 @@ import {
   HStack,
   Flex,
 } from "@chakra-ui/react"
-import Navbar from "@/components/navbar"
 import { categories, CategoryEnum } from "@/lib/data"
 import { useState } from "react"
 import ProfessionalGridDynamic from "@/components/professional-grid-dynamic"
@@ -19,8 +18,6 @@ export default function ProfessionalsPage() {
 
   return (
     <Box minH="100vh" bg="white">
-      {/* Navbar */}
-      <Navbar />
 
       {/* PROFESSIONALS SECTION (Para clientes) */}
       <Container bg="gray.50" maxW="full">

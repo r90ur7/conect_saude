@@ -11,6 +11,7 @@ export const system = createSystem(defaultConfig, {
                     accent: { value: "#66D7E5" }, 
                     light: { value: "#F5FFFE" },
                     dark: { value: "#156665" }, 
+                    subdark: { value: "#0D4D4A" },
                 },
                 light: {
                     basic: { value: "#FFFFFF" },

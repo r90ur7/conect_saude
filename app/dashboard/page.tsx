@@ -16,7 +16,7 @@ import {
 import { FaClock, FaSearch, FaStar, FaUser } from "react-icons/fa";
 import { professionals, categories, CategoryEnum } from "@/lib/data";
 import ProfessionalCard from "@/components/professional-card";
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/header/navbar";
 import { InputGroup } from "@/components/ui/input-group";
 import { useState, useMemo, useEffect } from "react";
 import {
@@ -78,7 +78,7 @@ export default function DashboardPage() {
     const paginationBg = useColorModeValue("#ebf8ff", "#2a4365");
 
     return (
-        <Box bgGradient="to-r" gradientFrom="gray.50" gradientTo="gray.100"  minH="100vh"  p={4}>
+        <Box bgGradient="to-r" gradientFrom="gray.50" gradientTo="gray.100" minH="100vh" p={4}>
             <Box bg={sidebarBg} shadow="md" borderRadius="md" mb={8}>
                 <Navbar />
             </Box>
@@ -187,7 +187,7 @@ export default function DashboardPage() {
                                             onChange={(e) => setSearchTerm(e.target.value)}
                                             bg="gray.50"
                                             borderRadius="md"
-                                            _placeholder={{ color: "gray.500", fontSize:"15px" }}
+                                            _placeholder={{ color: "gray.500", fontSize: "15px" }}
                                             _hover={{ bg: "gray.100", borderColor: "blue.300" }}
                                             _focus={{ bg: "white", borderColor: "blue.400", boxShadow: "outline" }}
                                         />

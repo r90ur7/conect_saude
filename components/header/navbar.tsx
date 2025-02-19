@@ -24,7 +24,8 @@ import {
 } from "@/components/ui/dialog";
 import { useEffect, useState } from "react";
 import { useRouter } from 'next/navigation';
-import ToggleColorModeButton from "./ToggleColorModeButton";
+import ToggleColorModeButton from "../ToggleColorModeButton";
+import { useColorModeValue } from "../ui/color-mode";
 
 /**
  * Navbar estática que usa localStorage para armazenar o usuário.
@@ -49,8 +50,11 @@ export default function Navbar() {
     setLoggedUser(null);
   };
 
+  // Define a cor de fundo com base no modo de cor
+  const bgColor = useColorModeValue("gray.50", "brand.dark");
+
   return (
-    <Box px={4} shadow="sm">
+    <Box px={4} shadow="sm" bg={bgColor}>
       <Flex h={16} alignItems="center" justifyContent="space-between">
         {/* LOGO */}
         <Link href="/">

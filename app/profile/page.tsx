@@ -23,7 +23,7 @@ import {
     FaPhone,
     FaMapMarkerAlt,
 } from "react-icons/fa";
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/header/navbar";
 import { Education } from "./Education";
 import { ImageUpload } from "./ImageUpload";
 import { Schedule } from "./Schedule";

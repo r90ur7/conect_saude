@@ -23,7 +23,7 @@ import {
 } from "react-icons/fa";
 import { professionals } from "@/lib/data";
 import { useParams } from "next/navigation";
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/header/navbar";
 import { useColorModeValue } from "@/components/ui/color-mode";
 
 export default function InfoProfessional() {

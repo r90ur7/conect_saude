@@ -33,38 +33,19 @@ export default function Home() {
           zIndex={0}
         />
         <Container maxW="container.xl" position="relative" zIndex={1}>
-            <Heading color="green.100" fontSize={{ base: "3xl", md: "5xl" }} lineHeight="shorter">
-            Connect Sáude
-            </Heading>
-          {/* <Box overflow="hidden" whiteSpace="nowrap">
-            <Heading
-              as="div"
-              display="inline-block"
-              fontSize={{ base: "3xl", md: "5xl" }}
-              lineHeight="shorter"
-              animation="marquee 10s linear infinite"
-            >
-              Conect Sáude
-            </Heading>
-          </Box>
-          <style jsx>{`
-            @keyframes marquee {
-              0% {
-              transform: translateX(100%);
-              }
-              100% {
-              transform: translateX(-100%);
-              }
-            }
-            `}</style> */}
           <SimpleGrid columns={{ base: 1, md: 2 }} m={8} alignItems="center">
             <VStack align="flex-start" m={6}>
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagem%20do%20WhatsApp%20de%202025-02-14%20%C3%A0(s)%2009.46.14_26537de3.jpg-L4LVfevrgLEIqOMNqt0NOSPVQR5W3Q.jpeg"
-                alt="Conect Saúde Logo"
-                w="100px"
-                borderRadius={"full"}
-              />
+              <VStack flexDirection={"row-reverse"} alignItems={"center"} align="flex-end">
+                <Heading color="green.100" fontSize={{ base: "3xl", md: "5xl" }} lineHeight="shorter">
+                  Connect Sáude
+                </Heading>
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagem%20do%20WhatsApp%20de%202025-02-14%20%C3%A0(s)%2009.46.14_26537de3.jpg-L4LVfevrgLEIqOMNqt0NOSPVQR5W3Q.jpeg"
+                  alt="Conect Saúde Logo"
+                  w="100px"
+                  borderRadius={"full"}
+                />
+              </VStack>
               <Heading fontSize={{ base: "3xl", md: "5xl" }} lineHeight="shorter">
                 Conectando você aos melhores profissionais de saúde
               </Heading>

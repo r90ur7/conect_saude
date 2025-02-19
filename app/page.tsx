@@ -33,6 +33,30 @@ export default function Home() {
           zIndex={0}
         />
         <Container maxW="container.xl" position="relative" zIndex={1}>
+            <Heading color="green.100" fontSize={{ base: "3xl", md: "5xl" }} lineHeight="shorter">
+            Connect Sáude
+            </Heading>
+          {/* <Box overflow="hidden" whiteSpace="nowrap">
+            <Heading
+              as="div"
+              display="inline-block"
+              fontSize={{ base: "3xl", md: "5xl" }}
+              lineHeight="shorter"
+              animation="marquee 10s linear infinite"
+            >
+              Conect Sáude
+            </Heading>
+          </Box>
+          <style jsx>{`
+            @keyframes marquee {
+              0% {
+              transform: translateX(100%);
+              }
+              100% {
+              transform: translateX(-100%);
+              }
+            }
+            `}</style> */}
           <SimpleGrid columns={{ base: 1, md: 2 }} m={8} alignItems="center">
             <VStack align="flex-start" m={6}>
               <Image
@@ -60,14 +84,14 @@ export default function Home() {
             <Box display={{ base: "none", md: "block" }} justifySelf="end">
               <Image
                 src="/assets/banner.png"
-              alt="Healthcare Professionals Illustration"
-              borderRadius="xl"
-              w="auto"
-              h="auto"
-              width={"35vw"}
-              maxW="500px"
-              objectFit="cover"
-              shadow="lg"
+                alt="Healthcare Professionals Illustration"
+                borderRadius="xl"
+                w="auto"
+                h="auto"
+                width={"35vw"}
+                maxW="500px"
+                objectFit="cover"
+                shadow="lg"
               />
             </Box>
           </SimpleGrid>

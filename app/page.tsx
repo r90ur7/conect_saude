@@ -59,15 +59,15 @@ export default function Home() {
             </VStack>
             <Box display={{ base: "none", md: "block" }} justifySelf="end">
               <Image
-                src="/assets/banner.webp"
-                alt="Healthcare Professionals"
-                borderRadius="xl"
-                w="auto"
-                h="auto"
-                width={"35vw"}
-                maxW="500px"
-                objectFit="cover"
-                shadow="lg"
+                src="/assets/banner.png"
+              alt="Healthcare Professionals Illustration"
+              borderRadius="xl"
+              w="auto"
+              h="auto"
+              width={"35vw"}
+              maxW="500px"
+              objectFit="cover"
+              shadow="lg"
               />
             </Box>
           </SimpleGrid>

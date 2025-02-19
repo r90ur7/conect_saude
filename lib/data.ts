@@ -35,7 +35,7 @@ export const professionals: Professional[] = [
     location: "Centro Médico São Paulo",
     image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=400&h=300&fit=crop",
     phone: "(11) 99999-9999",
-    category: CategoryEnum.CLINICA_MEDICA,
+    category: CategoryEnum.MEDICOS,
     email: "ana.silva@example.com",
     social: {
       instagram: "https://instagram.com",
@@ -147,7 +147,7 @@ export const professionals: Professional[] = [
     location: "Clínica Infantil Feliz",
     image: "https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?q=80&w=400&h=300&fit=crop",
     phone: "(11) 96666-6666",
-    category: "medicos",
+    category: CategoryEnum.MEDICOS,
     email: "marina.costa@example.com",
     social: {
       instagram: "https://instagram.com",
@@ -179,7 +179,7 @@ export const professionals: Professional[] = [
     location: "Rua das Flores, 500",
     image: "https://images.unsplash.com/photo-1523293836414-f04e712e1f3b?q=80&w=400&h=300&fit=crop",
     phone: "(11) 95555-5555",
-    category: "funerarias",
+    category: CategoryEnum.CLINICA_MEDICA,
     email: "atendimento@pazeterna.com",
     social: {
       facebook: "https://facebook.com",
@@ -205,7 +205,7 @@ export const professionals: Professional[] = [
     location: "Av. Principal, 100",
     image: "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?q=80&w=400&h=300&fit=crop",
     phone: "(11) 94444-4444",
-    category: "emergencias",
+    category: CategoryEnum.CLINICA_MEDICA,
     email: "ps24h@example.com",
     social: {
       instagram: "https://instagram.com",
@@ -232,7 +232,7 @@ export const professionals: Professional[] = [
     location: "Centro Médico Saúde Total",
     image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=400&h=300&fit=crop",
     phone: "(11) 93333-3333",
-    category: "especialistas",
+    category: CategoryEnum.LOJA_ORTOPEDICA,
     email: "roberto.oliveira@example.com",
     social: {
       linkedin: "https://linkedin.com",
@@ -264,7 +264,7 @@ export const professionals: Professional[] = [
     location: "Rua dos Exames, 200",
     image: "https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=400&h=300&fit=crop",
     phone: "(11) 92222-2222",
-    category: "laboratorios",
+    category: CategoryEnum.LABORATORIO,
     email: "contato@labdiagnostico.com",
     social: {
       instagram: "https://instagram.com",
@@ -293,7 +293,7 @@ export const professionals: Professional[] = [
     location: "Clínica Dermatológica",
     image: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?q=80&w=400&h=300&fit=crop",
     phone: "(11) 91111-1111",
-    category: "especialistas",
+    category: CategoryEnum.MEDICOS,
     email: "juliana.lima@example.com",
     social: {
       instagram: "https://instagram.com",
@@ -326,7 +326,7 @@ export const professionals: Professional[] = [
     location: "Jardim Saúde",
     image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=400&h=300&fit=crop",
     phone: "(11) 90000-0000",
-    category: "clinica-medica",
+    category: CategoryEnum.CLINICA_MEDICA,
     email: "contato@bemestar.com",
     social: {
       instagram: "https://instagram.com",
@@ -359,7 +359,7 @@ export const professionals: Professional[] = [
     location: "Instituto Mental",
     image: "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?q=80&w=400&h=300&fit=crop",
     phone: "(11) 98765-4321",
-    category: "especialistas",
+    category: CategoryEnum.CLINICA_MEDICA,
     email: "fernando.mendes@example.com",
     social: {
       linkedin: "https://linkedin.com",
@@ -390,7 +390,7 @@ export const professionals: Professional[] = [
     location: "Atendimento 24h",
     image: "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?q=80&w=400&h=300&fit=crop",
     phone: "(11) 91234-5678",
-    category: "emergencias",
+    category: CategoryEnum.CLINICA_MEDICA,
     email: "contato@ambulanciavida.com",
     social: {
       instagram: "https://instagram.com",
@@ -408,6 +408,100 @@ export const professionals: Professional[] = [
       "Frota com UTI móvel",
       "Certificação da ANVISA",
       "Profissionais especializados em emergências"
+    ]
+  },
+  {
+    id: "13",
+    name: "Dra. Paula Souza",
+    specialty: "Ginecologia",
+    location: "Clínica da Mulher",
+    image: "https://images.unsplash.com/photo-1606318313647-137d1f3b4d3c?q=80&w=2677&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    phone: "(11) 92345-6789",
+    category: CategoryEnum.MEDICOS,
+    email: "paula.souza@example.com",
+    social: {
+      instagram: "https://instagram.com",
+      facebook: "https://facebook.com",
+    },
+    schedule: [
+      { weekDay: "Segunda a Quarta", hours: "09:00 - 17:00" },
+      { weekDay: "Quinta-feira", hours: "09:00 - 15:00" },
+      { weekDay: "Sexta-feira", hours: "09:00 - 13:00" },
+    ],
+    weeklySchedule: [
+      { day: "Segunda-feira", activities: "Consultas ginecológicas, Exames preventivos" },
+      { day: "Terça-feira", activities: "Ultrassonografia, Consultas" },
+      { day: "Quarta-feira", activities: "Consultas e retornos" },
+      { day: "Quinta-feira", activities: "Procedimentos ginecológicos" },
+      { day: "Sexta-feira", activities: "Consultas e orientações" },
+    ],
+    about: "Dra. Paula Souza é ginecologista com foco em saúde da mulher, oferecendo atendimento humanizado e especializado. Atua na prevenção e tratamento de doenças ginecológicas.",
+    education: [
+      "Especialização em Ginecologia pela USP",
+      "Residência em Ginecologia e Obstetrícia",
+      "Membro da Sociedade Brasileira de Ginecologia",
+      "Formação em Ultrassonografia"
+    ]
+  },
+  {
+    id: "14",
+    name: "Clínica Odonto Sorriso",
+    specialty: "Odontologia",
+    location: "Rua dos Dentistas, 300",
+    image: "https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=2532&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    phone: "(11) 93456-7890",
+    category: CategoryEnum.CLINICA_ODONTOLOGICA,
+    email: "contato@odontosorriso.com",
+    social: {
+      instagram: "https://instagram.com",
+      facebook: "https://facebook.com",
+    },
+    schedule: [
+      { weekDay: "Segunda a Sexta", hours: "08:00 - 18:00" },
+      { weekDay: "Sábado", hours: "08:00 - 12:00" },
+    ],
+    weeklySchedule: [
+      { day: "Segunda a Sexta", activities: "Consultas odontológicas, Limpezas, Tratamentos" },
+      { day: "Sábado", activities: "Consultas e emergências" },
+    ],
+    about: "A Clínica Odonto Sorriso oferece serviços odontológicos completos, com foco em prevenção e estética. Nossa equipe está preparada para atender todas as necessidades de saúde bucal.",
+    education: [
+      "Equipe de dentistas especializados",
+      "Certificação em Ortodontia e Implantodontia",
+      "Equipamentos modernos",
+      "Parceria com laboratórios de prótese"
+    ]
+  },
+  {
+    id: "15",
+    name: "Dra. Beatriz Almeida",
+    specialty: "Nutrição",
+    location: "Espaço Vida Saudável",
+    image: "https://plus.unsplash.com/premium_photo-1661766718556-13c2efac1388?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    phone: "(11) 94567-8901",
+    category: CategoryEnum.NUTRICIONISTA,
+    email: "beatriz.almeida@example.com",
+    social: {
+      instagram: "https://instagram.com",
+      facebook: "https://facebook.com",
+    },
+    schedule: [
+      { weekDay: "Segunda a Quinta", hours: "10:00 - 18:00" },
+      { weekDay: "Sexta-feira", hours: "10:00 - 16:00" },
+    ],
+    weeklySchedule: [
+      { day: "Segunda-feira", activities: "Consultas nutricionais, Avaliações" },
+      { day: "Terça-feira", activities: "Planejamento alimentar, Consultas" },
+      { day: "Quarta-feira", activities: "Consultas e retornos" },
+      { day: "Quinta-feira", activities: "Orientação nutricional" },
+      { day: "Sexta-feira", activities: "Consultas e acompanhamento" },
+    ],
+    about: "Dra. Beatriz Almeida é nutricionista especializada em nutrição clínica e esportiva. Oferece atendimento personalizado para promover saúde e bem-estar através da alimentação.",
+    education: [
+      "Graduação em Nutrição pela USP",
+      "Especialização em Nutrição Esportiva",
+      "Membro do Conselho Regional de Nutrição",
+      "Cursos de atualização em Nutrição Funcional"
     ]
   }
 ];

@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import {
   Box,
   Container,
@@ -10,10 +11,27 @@ import {
 } from "@chakra-ui/react"
 
 export default function Footer() {
+  const [currentYear, setCurrentYear] = useState("")
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear().toString())
+  }, [])
+
   return (
-    <Box>
-      {/* FOOTER SECTION */}
-      <Box bg="gray.900" color="gray.300" py={8}>
+    <Box 
+      display="flex"
+      flexDirection="column"
+      bg="gray.50"
+      width="full"
+    >
+      <Box 
+        as="footer"
+        bg="gray.900"
+        color="gray.300"
+        py={8}
+        width="100%"
+        mt="auto"
+      >
         <Container maxW="container.xl">
           <SimpleGrid columns={{ base: 1, md: 3 }} m={8}>
             <VStack align="flex-start" m={2}>
@@ -42,7 +60,7 @@ export default function Footer() {
             </VStack>
           </SimpleGrid>
           <Text textAlign="center" mt={8} fontSize="sm">
-            &copy; {new Date().getFullYear()} Conect Saúde. Todos os direitos reservados.
+            &copy; {currentYear} Conect Saúde. Todos os direitos reservados.
           </Text>
         </Container>
       </Box>

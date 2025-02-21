@@ -150,43 +150,36 @@ export default function DashboardPage() {
 
                 {/* Conteúdo principal */}
                 <Container maxW="container.xl" bg="transparent" borderRadius="xl" p={8}>
-                    <VStack align="stretch" gap={8}>
-                        <Box bg={cardBg} p={6} borderRadius="xl" shadow="lg">
-                            <Box textAlign="center" mb={6}>
-                                <Heading color="blue.600" size="2xl" mb={2} fontFamily="Inter, sans-serif">
-                                    Profissionais de Saúde
-                                </Heading>
-                                <Text color="gray.600" fontSize="lg">
-                                    Encontre o profissional ideal para seu atendimento
-                                </Text>
-                            </Box>
-                            <VStack gap={4}>
-                                {/* <Group>
-                                    <InputGroup flex="1" startElement={<FaSearch />}>
-                                        <Input
-                                            size="lg"
-                                            placeholder="Buscar por nome, especialidade ou localização..."
-                                            value={searchTerm}
-                                            onChange={(e) => setSearchTerm(e.target.value)}
-                                            bg="gray.50"
-                                            borderRadius="md"
-                                            _placeholder={{ color: "gray.500", fontSize: "15px" }}
-                                            _hover={{ bg: "gray.100", borderColor: "blue.300" }}
-                                            _focus={{ bg: "white", borderColor: "blue.400", boxShadow: "outline" }}
-                                        />
-                                    </InputGroup>
-                                </Group>   */}
-                                {filteredProfessionals.length === 0 ? (
-                                    <Text color="gray.500" textAlign="center" py={8}>
-                                        Nenhum profissional encontrado com os filtros selecionados.
-                                    </Text>
-                                ) : (
-                                    <Text color="gray.500" textAlign="center">
-                                        {filteredProfessionals.length} profissionais encontrados
-                                    </Text>
-                                )}
-                            </VStack>
+                    <VStack flexDirection={"row-reverse"} justifyContent={"space-between"} gap={4}>
+                        <Box>
+                            <Heading
+                                color="blue.600"
+                                size="xl"
+                                mb={2}
+                                fontFamily="Inter, sans-serif"
+                                textAlign="right"
+                            >
+                                Profissionais de Saúde
+                            </Heading>
+                            <Text
+                                color="gray.600"
+                                fontSize="md"
+                                textAlign="right"
+                            >
+                                Encontre o profissional ideal para seu atendimento
+                            </Text>
                         </Box>
+                        {filteredProfessionals.length === 0 ? (
+                            <Text color="gray.500" textAlign="center" py={8}>
+                                Nenhum profissional encontrado com os filtros selecionados.
+                            </Text>
+                        ) : (
+                            <Text color="gray.500" textAlign="center">
+                                {filteredProfessionals.length} profissionais encontrados
+                            </Text>
+                        )}
+                    </VStack>
+                    <VStack align="stretch" gap={8}>
 
                         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} m={6}>
                             {currentProfessionals.map((professional) => (

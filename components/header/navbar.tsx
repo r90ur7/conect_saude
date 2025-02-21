@@ -10,7 +10,6 @@ import {
   useDisclosure,
   Group,
   Input,
-  Container,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { FaSearch } from "react-icons/fa";
@@ -38,7 +37,7 @@ import { InputGroup } from "@/components/ui/input-group";
 
 interface NavbarProps {
   searchTerm?: string;
-  setSearchTerm: Dispatch<SetStateAction<string>>;
+  setSearchTerm?: Dispatch<SetStateAction<string>>;
 }
 
 
@@ -86,7 +85,7 @@ export default function Navbar({ searchTerm, setSearchTerm }: NavbarProps) {
                 size="lg"
                 placeholder="Buscar por nome, especialidade ou localização..."
                 value={searchTerm}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm?.(e.target.value)}
                 bg="gray.50"
                 borderRadius="md"
                 px={6}

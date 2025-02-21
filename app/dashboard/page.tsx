@@ -71,7 +71,6 @@ export default function DashboardPage() {
 
     // Variáveis para cores
     const sidebarBg = useColorModeValue("brand.primary", "brand.dark");
-    const cardBg = useColorModeValue("white", "gray.800");
     const paginationBg = useColorModeValue("#ebf8ff", "#2a4365");
     const backgrounfrom = useColorModeValue("gray.50", "gray.500");
     const backgrounto = useColorModeValue("gray.100", "gray.900");

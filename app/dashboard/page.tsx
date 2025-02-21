@@ -10,14 +10,11 @@ import {
     Button,
     Text,
     Icon,
-    Input,
-    Group,
 } from "@chakra-ui/react";
-import { FaSearch, FaStar, FaUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import { professionals, categories, CategoryEnum } from "@/lib/data";
 import ProfessionalCard from "@/components/professional-card";
 import Navbar from "@/components/header/navbar";
-import { InputGroup } from "@/components/ui/input-group";
 import { useState, useMemo, useEffect } from "react";
 import {
     PaginationRoot,
@@ -83,7 +80,7 @@ export default function DashboardPage() {
     return (
         <Box bgGradient="to-r" gradientFrom={backgrounfrom} gradientTo={backgrounto} minH="100vh" p={4}>
             <Box bg={sidebarBg} shadow="md" borderRadius="md" mb={8}>
-                <Navbar />
+                <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
             </Box>
             <Flex direction={{ base: "column", lg: "row" }} gap={4}>
                 {/* Sidebar */}
@@ -99,22 +96,18 @@ export default function DashboardPage() {
                     <VStack align="stretch" gap={6}>
                         <Box>
                             <Heading size="sm" color="light.snow" mb={2}>
-                                FILTROS RÁPIDOS
+                                FILTRE POR CATEGORIA
                             </Heading>
                             <VStack align="stretch" gap={2}>
                                 <Button
-                                    variant="ghost"
-                                    justifyContent="flex-start"
-                                    color="white"
-                                    _hover={{ bg: "gray.100" }}
-                                    transition="background 0.3s"
-                                    onClick={() => {
-                                        setSearchTerm("");
-                                        setSelectedCategory(CategoryEnum.TODAS);
-                                        setCurrentPage(1);
-                                    }}
+                                    onClick={handleClearFilters}
+                                    variant="outline"
+                                    colorScheme="blue"
+                                    borderColor="blue.400"
+                                    color="blue.400"
+                                    _hover={{ bg: "blue.400", color: "white" }}
                                 >
-                                    <Icon as={FaStar} mr={2} /> Todos os Profissionais
+                                    Limpar Filtros
                                 </Button>
                             </VStack>
                         </Box>
@@ -168,7 +161,7 @@ export default function DashboardPage() {
                                 </Text>
                             </Box>
                             <VStack gap={4}>
-                                <Group>
+                                {/* <Group>
                                     <InputGroup flex="1" startElement={<FaSearch />}>
                                         <Input
                                             size="lg"
@@ -182,17 +175,7 @@ export default function DashboardPage() {
                                             _focus={{ bg: "white", borderColor: "blue.400", boxShadow: "outline" }}
                                         />
                                     </InputGroup>
-                                </Group>
-                                <Button
-                                    onClick={handleClearFilters}
-                                    variant="outline"
-                                    colorScheme="blue"
-                                    borderColor="blue.400"
-                                    color="blue.400"
-                                    _hover={{ bg: "blue.400", color: "white" }}
-                                >
-                                    Limpar
-                                </Button>
+                                </Group>   */}
                                 {filteredProfessionals.length === 0 ? (
                                     <Text color="gray.500" textAlign="center" py={8}>
                                         Nenhum profissional encontrado com os filtros selecionados.

@@ -9,8 +9,11 @@ import {
   HStack,
   useDisclosure,
   Group,
+  Input,
+  Container,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import { FaSearch } from "react-icons/fa";
 import { Avatar } from "@/components/ui/avatar";
 import { LoginForm } from "@/app/login/auth";
 import {
@@ -22,19 +25,29 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { useEffect, useState } from "react";
-import { useRouter } from 'next/navigation';
+import { SetStateAction, Dispatch, useEffect, useState } from "react";
+import { usePathname, useRouter } from 'next/navigation';
 import ToggleColorModeButton from "../ToggleColorModeButton";
 import { useColorModeValue } from "../ui/color-mode";
+import { InputGroup } from "@/components/ui/input-group";
 
 /**
  * Navbar estática que usa localStorage para armazenar o usuário.
  * Se o usuário estiver logado, exibe o avatar; caso contrário, exibe o botão "Entrar" (que abre o diálogo).
  */
-export default function Navbar() {
+
+interface NavbarProps {
+  searchTerm?: string;
+  setSearchTerm: Dispatch<SetStateAction<string>>;
+}
+
+
+export default function Navbar({ searchTerm, setSearchTerm }: NavbarProps) {
   const { open, onOpen, onClose } = useDisclosure();
   const [loggedUser, setLoggedUser] = useState<any>(null);
   const router = useRouter();
+  const pathname = usePathname();
+  const showSearch = pathname === '/dashboard' && loggedUser;
 
   // Ao montar, recupera o usuário do localStorage
   useEffect(() => {
@@ -65,10 +78,30 @@ export default function Navbar() {
             h={10}
           />
         </Link>
+        {/* Barra de pesquisa*/}
+        {showSearch && (
+          <Box ml={96}>
+            <InputGroup flex="1" w="45vw" startElement={<FaSearch />}>
+              <Input
+                size="lg"
+                placeholder="Buscar por nome, especialidade ou localização..."
+                value={searchTerm}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
+                bg="gray.50"
+                borderRadius="md"
+                px={6}
+                _placeholder={{ color: "gray.500", fontSize: "15px" }}
+                _hover={{ bg: "gray.100", borderColor: "blue.300" }}
+                _focus={{ bg: "white", borderColor: "blue.400", boxShadow: "outline" }}
+              />
+            </InputGroup>
+          </Box>
+        )}
         <Group>
-          <ToggleColorModeButton />
+
           {/* SEÇÃO DA DIREITA */}
           <Stack direction="row" align="center">
+            <ToggleColorModeButton />
             {loggedUser ? (
               <HStack p={4} m={4}>
                 <Link href="/dashboard">

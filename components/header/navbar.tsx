@@ -79,8 +79,8 @@ export default function Navbar({ searchTerm, setSearchTerm }: NavbarProps) {
         </Link>
         {/* Barra de pesquisa*/}
         {showSearch && (
-          <Box ml={96}>
-            <InputGroup flex="1" w="45vw" startElement={<FaSearch />}>
+          <Box ml={[0,0,0,0,64]}>
+            <InputGroup flex="1" w="30vw" startElement={<FaSearch />}>
               <Input
                 size="lg"
                 placeholder="Buscar por nome, especialidade ou localização..."

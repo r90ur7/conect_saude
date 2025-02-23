@@ -1,7 +1,7 @@
 "use client";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes"
-// import { Analytics } from "@vercel/analytics";
+import { Analytics } from "@vercel/analytics/react"
 import { ChakraProvider } from "@chakra-ui/react";
 import './styles/globals.css'
 import { system } from "./styles/theme";
@@ -27,6 +27,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Analytics />
         <ChakraProvider value={system}>
           <ThemeProvider attribute="class">
             {children}

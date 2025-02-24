@@ -17,9 +17,9 @@ export interface Professional {
     hours: string
   }[]
   weeklySchedule?: {
-    day: string
     activities: string
-  }[]
+    image: string[]
+  }
   about?: string
   education?: string[]
 }

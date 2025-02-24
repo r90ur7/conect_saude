@@ -14,6 +14,8 @@ import {
     Button,
     Icon,
     Link,
+    Dialog,
+    SimpleGrid,
 } from "@chakra-ui/react";
 import {
     FaWhatsapp,
@@ -24,18 +26,29 @@ import {
     FaPhone,
     FaMapMarkerAlt,
 } from "react-icons/fa";
-import { professionals } from "@/lib/data";
+import { professionals, COLORS } from "@/lib/data";
 import { useParams } from "next/navigation";
 import Navbar from "@/components/header/navbar";
 import { useColorModeValue } from "@/components/ui/color-mode";
-
+import { useEffect, useState } from "react";
 export default function InfoProfessional() {
+    const [mounted, setMounted] = useState(false);
     const params = useParams();
     const professional = professionals.find((p) => p.id === params.id);
 
-    const cardBg = useColorModeValue("whiteAlpha.900", "blackAlpha.700");
-    const accentColor = useColorModeValue("brand.accent", "brand.accentDark");
-    const navbarBg = useColorModeValue("brand.tertiary", "gray.800");
+    const colorMode = useColorModeValue("light", "dark");
+    const cardBg = COLORS.cardBg[colorMode];
+    const accentColor = COLORS.accentColor[colorMode];
+    const navbarBg = COLORS.navbarBg[colorMode];
+    const backgroundFrom = COLORS.background.from[colorMode];
+    const backgroundTo = COLORS.background.to[colorMode];
+
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    if (!mounted) return null;
 
     if (!professional) {
         return (
@@ -49,10 +62,10 @@ export default function InfoProfessional() {
 
     return (
         <Box
-            height="100vh"
+            minH="100vh"
             display="flex"
             flexDirection="column"
-            bgGradient="linear(to-b, gray.50, white)"
+            bgGradient="to-r" gradientFrom={backgroundFrom} gradientTo={backgroundTo}
         >
             {/* Navbar */}
             <Box bg={navbarBg}>
@@ -60,55 +73,56 @@ export default function InfoProfessional() {
             </Box>
 
             {/* Container principal */}
-            <Container maxW="container.xl" flex="1" p={4}>
+            <Container m={12} maxW="container.lg" p={4} flex="1">
                 <Grid
-                    templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
-                    gap={4}
-                    height="100%"
+                    templateColumns={{ base: "1fr", md: "1fr", lg: "repeat(2, 1fr)" }}
+                    gap={6}
                 >
                     {/* Card 1: Informações Básicas */}
-                    <GridItem colSpan={{ base: 1, md: 1 }}>
+                    <GridItem colSpan={1}>
                         <Flex
                             direction="column"
                             bg={cardBg}
                             borderRadius="lg"
                             boxShadow="md"
                             p={4}
-                            h="50%"
-                            overflow="hidden"
+                            minH="fit-content"
                         >
-                            <Flex mb={4} align="center">
+                            <Flex mb={4} align="center" direction={{ base: "column", sm: "row" }}>
                                 <Image
                                     src={professional.image}
                                     alt={professional.name}
                                     borderRadius="full"
                                     boxSize="80px"
                                     objectFit="cover"
-                                    mr={3}
+                                    mb={{ base: 2, sm: 0 }}
+                                    mr={{ sm: 3 }}
                                 />
                                 <VStack align="start" m={1}>
                                     <Heading size="sm" color={accentColor}>
                                         {professional.name}
                                     </Heading>
                                     <Text fontSize="xs">{professional.specialty}</Text>
-                                    <HStack m={1}>
+                                    <HStack>
                                         <Icon as={FaMapMarkerAlt} boxSize="12px" color="gray.600" />
                                         <Text fontSize="xs">{professional.location}</Text>
                                     </HStack>
                                 </VStack>
                             </Flex>
-                            <VStack m={1} align="start">
-                                <HStack m={1}>
+
+                            <VStack align="start" m={1}>
+                                <HStack>
                                     <Icon as={FaPhone} boxSize="12px" color="gray.600" />
                                     <Text fontSize="xs">{professional.phone}</Text>
                                 </HStack>
-                                <HStack m={1}>
+                                <HStack>
                                     <Icon as={FaEnvelope} boxSize="12px" color="gray.600" />
                                     <Text fontSize="xs">{professional.email}</Text>
                                 </HStack>
                             </VStack>
-                            <HStack m={2} mt={4}>
-                                <Button size="xs" colorPalette={"teal"} ml={2}>
+
+                            <HStack mt={4} m={3}>
+                                <Button size="xs" colorScheme="teal">
                                     <Link href={whatsappLink}>
                                         <Icon as={FaWhatsapp} boxSize="16px" color="green.500" />
                                     </Link>
@@ -130,49 +144,8 @@ export default function InfoProfessional() {
                                     </Link>
                                 )}
                             </HStack>
-                            <Heading size="xs" mb={1}>
-                                Sobre {professional.name}
-                            </Heading>
-                            <Text m={2} fontSize="xs" textAlign="justify">
-                                {professional.about}
-                            </Text>
-                            <VStack
-                                align="start"
-                                // bg={cardBg}
-                                // borderRadius="lg"
-                                // boxShadow="md"
-                                p={4}
-                                m={2}
-                                // h="100%"
-                                overflow="hidden"
-                            >
-                                {professional.education && (
-                                    <VStack align="start" m={1} mt={2}>
-                                        <Heading size="xs">Formação</Heading>
-                                        {professional.education.map((edu, index) => (
-                                            <Text key={index} fontSize="xx-small">
-                                                • {edu}
-                                            </Text>
-                                        ))}
-                                    </VStack>
-                                )}
-                            </VStack>
-                        </Flex>
-                    </GridItem>
 
-                    {/* Card 2: Horários & Agenda */}
-                    <GridItem colSpan={{ base: 1, md: 1 }}>
-                        <VStack
-                            align="start"
-                            bg={cardBg}
-                            borderRadius="lg"
-                            boxShadow="md"
-                            p={4}
-                            m={2}
-                            h="50%"
-                            overflow="hidden"
-                        >
-                            <Heading size="xs">Horários de Atendimento</Heading>
+                            <Heading mt={4} size="xs">Horários de Atendimento</Heading>
                             {professional.schedule?.map((day, index) => (
                                 <HStack key={index} justify="space-between" width="100%">
                                     <Text fontSize="xs" fontWeight="bold">
@@ -181,24 +154,95 @@ export default function InfoProfessional() {
                                     <Text fontSize="xs">{day.hours}</Text>
                                 </HStack>
                             ))}
-                            <Heading size="xs" mt={2}>
-                                Agenda Semanal
+
+                            <Heading mt={4} size="xs">
+                                Sobre {professional.name}
                             </Heading>
-                            {professional.weeklySchedule?.map((activity, index) => (
-                                <Box key={index} width="100%">
-                                    <Text fontSize="xs" fontWeight="bold">
-                                        {activity.day}
-                                    </Text>
-                                    <Text fontSize="xs">{activity.activities}</Text>
-                                </Box>
-                            ))}
-                        </VStack>
+                            <Text fontSize="xs" textAlign="justify">
+                                {professional.about}
+                            </Text>
+                        </Flex>
                     </GridItem>
 
-                    {/* Card 3: Galeria de fotos */}
-                    {/* <GridItem colSpan={{ base: 1, md: 2 }}>
-                        
-                    </GridItem> */}
+                    {/* Card 2: Horários & Agenda */}
+                    <GridItem colSpan={1}>
+                        <VStack align="start" m={4} width="100%">
+                            {/* {selectedImage && (
+                                <Dialog.Root open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+                                    <Dialog.Content>
+                                        <Dialog.Title>Horário de Atendimento</Dialog.Title>
+                                        <Dialog.Description>
+                                            <Image
+                                                src={selectedImage}
+                                                alt="Horário Ampliado"
+                                                width="100%"
+                                                height="auto"
+                                                objectFit="contain"
+                                            />
+                                        </Dialog.Description>
+                                    </Dialog.Content>
+                                </Dialog.Root>
+                            )} */}
+
+                            <Box width="100%">
+                                <Box
+                                    overflowX="auto"
+                                    maxW={{ base: "100%", md: "800px" }}
+                                    mx="auto"
+                                    css={{
+                                        '&::-webkit-scrollbar': {
+                                            height: '6px',
+                                        },
+                                        '&::-webkit-scrollbar-thumb': {
+                                            backgroundColor: 'rgba(0,0,0,0.2)',
+                                            borderRadius: '4px',
+                                        }
+                                    }}
+                                >
+                                    <Box width="100%" px={4} py={6}>
+                                        <Text fontSize="md" fontWeight="bold" mb={2} color="white">
+                                            Atividades
+                                        </Text>
+                                        <Text fontSize="sm" color="white" mb={4}>
+                                            {professional.weeklySchedule?.activities}
+                                        </Text>
+
+                                        <SimpleGrid
+                                            columns={{ base: 2, sm: 3, md: 4 }}
+                                            gap={4}
+                                            justifyItems="center"
+                                        >
+                                            {professional.weeklySchedule?.image.map((image, index) => (
+                                                <Box
+                                                    key={index}
+                                                    w="100%"
+                                                    maxW="250px"
+                                                    borderRadius="md"
+                                                    overflow="hidden"
+                                                    transition="all 0.3s"
+                                                    _hover={{
+                                                        transform: "scale(1.05)",
+                                                        boxShadow: "lg",
+                                                    }}
+                                                >
+                                                    <Image
+                                                        src={image}
+                                                        alt={`Imagem ${index + 1}`}
+                                                        w="100%"
+                                                        h="auto"
+                                                        maxH="300px"
+                                                        objectFit="cover"
+                                                        loading="lazy"
+                                                        borderRadius="md"
+                                                    />
+                                                </Box>
+                                            ))}
+                                        </SimpleGrid>
+                                    </Box>
+                                </Box>
+                            </Box>
+                        </VStack>
+                    </GridItem>
                 </Grid>
             </Container>
         </Box>

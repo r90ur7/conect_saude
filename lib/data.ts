@@ -26,6 +26,31 @@ export const categories = [
   { id: CategoryEnum.OTICAS, name: "Óticas" },
 ];
 
+export const COLORS = {
+  cardBg: {
+    light: "whiteAlpha.900",
+    dark: "blackAlpha.700"
+  },
+  accentColor: {
+    light: "brand.accent",
+    dark: "brand.accentDark" 
+  },
+  navbarBg: {
+    light: "brand.tertiary",
+    dark: "gray.800"
+  },
+  background: {
+    from: {
+      light: "gray.50",
+      dark: "gray.500"
+    },
+    to: {
+      light: "gray.100", 
+      dark: "gray.900"
+    }
+  }
+};
+
 
 export const professionals: Professional[] = [
   {
@@ -44,9 +69,10 @@ export const professionals: Professional[] = [
     schedule: [
       { weekDay: "Segunda a Sexta", hours: "08:00 - 12:00, 14:00 - 17:00" },
     ],
-    weeklySchedule: [
-      { day: "Segunda a Sexta", activities: "Venda de produtos ortopédicos, Atendimento ao cliente" },
-    ],
+    weeklySchedule: {
+      activities: "Atendimento em clínica geral, consultas de rotina, exames preventivos e procedimentos ambulatoriais",
+      image: ["/assets/ClienteRealassets/Foto2.jpg", "/assets/ClienteRealassets/foto3.jpg", "/assets/ClienteRealassets/foto4.jpg", "/assets/ClienteRealassets/foto5.jpg"]
+    },
     about: "A Loja Ortopédica Euclides oferece uma ampla variedade de produtos ortopédicos de alta qualidade. Nossa missão é proporcionar conforto e bem-estar aos nossos clientes, com atendimento especializado e produtos de confiança.",
     education: [
       "Equipe treinada em produtos ortopédicos",
@@ -76,28 +102,10 @@ export const professionals: Professional[] = [
       { weekDay: "Quinta-feira", hours: "08:00 - 18:00" },
       { weekDay: "Sexta-feira", hours: "08:00 - 16:00" },
     ],
-    weeklySchedule: [
-      { 
-        day: "Segunda-feira", 
-        activities: "Consultas gerais, Avaliações de rotina" 
-      },
-      { 
-        day: "Terça-feira", 
-        activities: "Consultas gerais, Exames preventivos" 
-      },
-      { 
-        day: "Quarta-feira", 
-        activities: "Consultas gerais, Retornos" 
-      },
-      { 
-        day: "Quinta-feira", 
-        activities: "Consultas gerais, Procedimentos ambulatoriais" 
-      },
-      { 
-        day: "Sexta-feira", 
-        activities: "Consultas gerais, Reuniões clínicas" 
-      },
-    ],
+    weeklySchedule: {
+      activities: "Consultas gerais, Avaliações de rotina",
+      image: ["https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?q=80&w=400&h=300&fit=crop"]
+    },
     about: "Com mais de 15 anos de experiência em Clínica Geral, a Dra. Ana Silva é reconhecida por sua abordagem humanizada e atendimento personalizado. Dedica-se ao cuidado integral da saúde de seus pacientes, com foco na prevenção e promoção do bem-estar.",
     education: [
       "Graduação em Medicina pela Universidade de São Paulo (USP)",
@@ -124,10 +132,10 @@ export const professionals: Professional[] = [
       { weekDay: "Segunda a Sexta", hours: "06:00 - 18:00" },
       { weekDay: "Sábado", hours: "07:00 - 13:00" },
     ],
-    weeklySchedule: [
-      { day: "Segunda a Sexta", activities: "Coleta de exames, Análises laboratoriais" },
-      { day: "Sábado", activities: "Coleta de exames" },
-    ],
+    weeklySchedule: {
+      activities: "Coleta de exames, Análises laboratoriais",
+      image: ["https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?q=80&w=400&h=300&fit=crop"]
+    },
     about: "O Laboratório Central é referência em análises clínicas há mais de 25 anos. Equipado com tecnologia de ponta e equipe altamente qualificada, oferece resultados precisos e confiáveis em tempo recorde.",
     education: [
       "Certificação ISO 9001",
@@ -154,11 +162,10 @@ export const professionals: Professional[] = [
       { weekDay: "Quarta-feira", hours: "09:00 - 17:00" },
       { weekDay: "Sexta-feira", hours: "09:00 - 16:00" },
     ],
-    weeklySchedule: [
-      { day: "Segunda-feira", activities: "Consultas cardiológicas, Exames de rotina" },
-      { day: "Quarta-feira", activities: "Ecocardiograma, Check-up cardíaco" },
-      { day: "Sexta-feira", activities: "Consultas e retornos" },
-    ],
+    weeklySchedule: {
+      activities: "Consultas cardiológicas, Exames de rotina",
+      image: ["https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=400&h=300&fit=crop"]
+    },
     about: "Dr. Carlos Santos é especialista em Cardiologia com mais de 20 anos de experiência. Dedica-se ao diagnóstico e tratamento de doenças cardiovasculares, com ênfase em prevenção e qualidade de vida.",
     education: [
       "Doutorado em Cardiologia pela UNIFESP",
@@ -184,13 +191,10 @@ export const professionals: Professional[] = [
       { weekDay: "Segunda a Quinta", hours: "08:00 - 16:00" },
       { weekDay: "Sexta-feira", hours: "08:00 - 12:00" },
     ],
-    weeklySchedule: [
-      { day: "Segunda-feira", activities: "Consultas pediátricas, Puericultura" },
-      { day: "Terça-feira", activities: "Consultas de rotina, Vacinação" },
-      { day: "Quarta-feira", activities: "Consultas e acompanhamento" },
-      { day: "Quinta-feira", activities: "Consultas e orientação nutricional" },
-      { day: "Sexta-feira", activities: "Retornos e casos especiais" },
-    ],
+    weeklySchedule: {
+      activities: "Consultas pediátricas, Puericultura",
+      image: ["https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?q=80&w=400&h=300&fit=crop"]
+    },
     about: "Dra. Marina Costa é pediatra há 12 anos, com especial dedicação ao desenvolvimento infantil e medicina preventiva. Sua abordagem acolhedora torna as consultas mais tranquilas para crianças e pais.",
     education: [
       "Especialização em Pediatria pela UNIFESP",
@@ -214,9 +218,10 @@ export const professionals: Professional[] = [
     schedule: [
       { weekDay: "Segunda a Domingo", hours: "24 horas" },
     ],
-    weeklySchedule: [
-      { day: "Todos os dias", activities: "Atendimento 24h, Serviços funerários completos" },
-    ],
+    weeklySchedule: {
+      activities: "Atendimento 24h, Serviços funerários completos",
+      image: ["https://images.unsplash.com/photo-1523293836414-f04e712e1f3b?q=80&w=400&h=300&fit=crop"]
+    },
     about: "A Funerária Paz Eterna oferece serviços funerários completos com respeito e dignidade há mais de 30 anos. Nossa equipe está preparada para dar todo o suporte necessário nos momentos mais difíceis.",
     education: [
       "Certificação em Tanatopraxia",
@@ -241,9 +246,10 @@ export const professionals: Professional[] = [
     schedule: [
       { weekDay: "Segunda a Domingo", hours: "24 horas" },
     ],
-    weeklySchedule: [
-      { day: "Todos os dias", activities: "Atendimento de emergência 24h, Pronto-atendimento" },
-    ],
+    weeklySchedule: {
+      activities: "Atendimento de emergência 24h, Pronto-atendimento",
+      image: ["https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?q=80&w=400&h=300&fit=crop"]
+    },
     about: "O Pronto Socorro 24h está equipado para atender emergências médicas com rapidez e eficiência. Nossa equipe multidisciplinar está pronta para oferecer o melhor atendimento em situações críticas.",
     education: [
       "Equipe médica especializada em emergências",
@@ -269,13 +275,10 @@ export const professionals: Professional[] = [
       { weekDay: "Terça e Quinta", hours: "13:00 - 19:00" },
       { weekDay: "Sexta-feira", hours: "08:00 - 16:00" },
     ],
-    weeklySchedule: [
-      { day: "Segunda-feira", activities: "Consultas ortopédicas, Avaliações" },
-      { day: "Terça-feira", activities: "Cirurgias eletivas" },
-      { day: "Quarta-feira", activities: "Consultas e retornos pós-operatórios" },
-      { day: "Quinta-feira", activities: "Cirurgias e procedimentos" },
-      { day: "Sexta-feira", activities: "Consultas e revisões" },
-    ],
+    weeklySchedule: {
+      activities: "Consultas ortopédicas, Avaliações",
+      image: ["https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=400&h=300&fit=crop"]
+    },
     about: "Dr. Roberto Oliveira é especialista em Ortopedia e Traumatologia, com foco em cirurgias minimamente invasivas e tratamento de lesões esportivas. Possui vasta experiência em procedimentos artroscópicos.",
     education: [
       "Doutorado em Ortopedia pela USP",
@@ -301,10 +304,10 @@ export const professionals: Professional[] = [
       { weekDay: "Segunda a Sexta", hours: "07:00 - 19:00" },
       { weekDay: "Sábado", hours: "07:00 - 13:00" },
     ],
-    weeklySchedule: [
-      { day: "Segunda a Sexta", activities: "Raio-X, Tomografia, Ressonância, Ultrassom" },
-      { day: "Sábado", activities: "Raio-X e Ultrassom" },
-    ],
+      weeklySchedule: {
+      activities: "Raio-X, Tomografia, Ressonância, Ultrassom",
+      image: ["https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=400&h=300&fit=crop"]
+    },
     about: "O Laboratório Diagnóstico é referência em exames de imagem, oferecendo tecnologia de ponta e laudos precisos. Nossa equipe de radiologistas é altamente qualificada para realizar diversos tipos de exames diagnósticos.",
     education: [
       "Equipamentos de última geração",
@@ -331,13 +334,10 @@ export const professionals: Professional[] = [
       { weekDay: "Segunda a Quinta", hours: "09:00 - 17:00" },
       { weekDay: "Sexta-feira", hours: "09:00 - 15:00" },
     ],
-    weeklySchedule: [
-      { day: "Segunda-feira", activities: "Consultas clínicas, Procedimentos estéticos" },
-      { day: "Terça-feira", activities: "Tratamentos a laser, Consultas" },
-      { day: "Quarta-feira", activities: "Cirurgias dermatológicas" },
-      { day: "Quinta-feira", activities: "Consultas e procedimentos estéticos" },
-      { day: "Sexta-feira", activities: "Retornos e avaliações" },
-    ],
+    weeklySchedule: {
+      activities: "Consultas clínicas, Procedimentos estéticos",
+      image: ["https://images.unsplash.com/photo-1527613426441-4da17471b66d?q=80&w=400&h=300&fit=crop"]
+    },
     about: "Dra. Juliana Lima é especialista em Dermatologia Clínica e Estética, com expertise em tratamentos avançados para pele. Dedica-se ao tratamento de doenças dermatológicas e procedimentos estéticos.",
     education: [
       "Especialização em Dermatologia pela SBD",
@@ -363,14 +363,10 @@ export const professionals: Professional[] = [
       { weekDay: "Segunda a Sexta", hours: "08:00 - 20:00" },
       { weekDay: "Sábado", hours: "09:00 - 14:00" },
     ],
-    weeklySchedule: [
-      { day: "Segunda-feira", activities: "Acupuntura, Medicina Tradicional Chinesa" },
-      { day: "Terça-feira", activities: "Homeopatia, Fitoterapia" },
-      { day: "Quarta-feira", activities: "Terapias holísticas, Consultas" },
-      { day: "Quinta-feira", activities: "Nutrição funcional, Acupuntura" },
-      { day: "Sexta-feira", activities: "Consultas integrativas" },
-      { day: "Sábado", activities: "Terapias complementares" },
-    ],
+    weeklySchedule: {
+      activities: "Acupuntura, Medicina Tradicional Chinesa",
+      image: ["https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=400&h=300&fit=crop"]
+    },
     about: "A Clínica Bem Estar é especializada em medicina integrativa, unindo práticas convencionais e complementares para promover saúde e bem-estar. Nossa abordagem visa o equilíbrio entre corpo e mente.",
     education: [
       "Equipe multidisciplinar especializada",
@@ -395,13 +391,10 @@ export const professionals: Professional[] = [
       { weekDay: "Segunda a Quinta", hours: "08:00 - 17:00" },
       { weekDay: "Sexta-feira", hours: "08:00 - 12:00" },
     ],
-    weeklySchedule: [
-      { day: "Segunda-feira", activities: "Consultas psiquiátricas, Avaliações" },
-      { day: "Terça-feira", activities: "Terapia em grupo, Consultas" },
-      { day: "Quarta-feira", activities: "Atendimento individual" },
-      { day: "Quinta-feira", activities: "Consultas e acompanhamento" },
-      { day: "Sexta-feira", activities: "Supervisão clínica, Retornos" },
-    ],
+    weeklySchedule: {
+      activities: "Consultas psiquiátricas, Avaliações",
+      image: ["https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?q=80&w=400&h=300&fit=crop"]
+    },
     about: "Dr. Fernando Mendes é psiquiatra com mais de 15 anos de experiência, especializado em transtornos de humor e ansiedade. Sua abordagem humanizada visa o bem-estar mental e emocional dos pacientes.",
     education: [
       "Doutorado em Psiquiatria pela UNIFESP",
@@ -426,9 +419,10 @@ export const professionals: Professional[] = [
     schedule: [
       { weekDay: "Segunda a Domingo", hours: "24 horas" },
     ],
-    weeklySchedule: [
-      { day: "Todos os dias", activities: "Remoções de emergência, Transporte inter-hospitalar" },
-    ],
+    weeklySchedule: {
+      activities: "Remoções de emergência, Transporte inter-hospitalar",
+      image: ["https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?q=80&w=400&h=300&fit=crop"]
+    },
     about: "A Ambulância Vida oferece serviço de remoção e transporte de pacientes com segurança e profissionalismo. Nossa frota moderna e equipe especializada garantem atendimento de qualidade 24 horas por dia.",
     education: [
       "Equipe certificada em suporte básico e avançado",
@@ -455,13 +449,10 @@ export const professionals: Professional[] = [
       { weekDay: "Quinta-feira", hours: "09:00 - 15:00" },
       { weekDay: "Sexta-feira", hours: "09:00 - 13:00" },
     ],
-    weeklySchedule: [
-      { day: "Segunda-feira", activities: "Consultas ginecológicas, Exames preventivos" },
-      { day: "Terça-feira", activities: "Ultrassonografia, Consultas" },
-      { day: "Quarta-feira", activities: "Consultas e retornos" },
-      { day: "Quinta-feira", activities: "Procedimentos ginecológicos" },
-      { day: "Sexta-feira", activities: "Consultas e orientações" },
-    ],
+    weeklySchedule: {
+      activities: "Consultas ginecológicas, Exames preventivos",
+      image: ["https://images.unsplash.com/photo-1606318313647-137d1f3b4d3c?q=80&w=2677&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"]
+    },
     about: "Dra. Paula Souza é ginecologista com foco em saúde da mulher, oferecendo atendimento humanizado e especializado. Atua na prevenção e tratamento de doenças ginecológicas.",
     education: [
       "Especialização em Ginecologia pela USP",
@@ -487,10 +478,10 @@ export const professionals: Professional[] = [
       { weekDay: "Segunda a Sexta", hours: "08:00 - 18:00" },
       { weekDay: "Sábado", hours: "08:00 - 12:00" },
     ],
-    weeklySchedule: [
-      { day: "Segunda a Sexta", activities: "Consultas odontológicas, Limpezas, Tratamentos" },
-      { day: "Sábado", activities: "Consultas e emergências" },
-    ],
+    weeklySchedule: {
+      activities: "Consultas odontológicas, Limpezas, Tratamentos",
+      image: ["https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=2532&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"]
+    },
     about: "A Clínica Odonto Sorriso oferece serviços odontológicos completos, com foco em prevenção e estética. Nossa equipe está preparada para atender todas as necessidades de saúde bucal.",
     education: [
       "Equipe de dentistas especializados",
@@ -516,13 +507,10 @@ export const professionals: Professional[] = [
       { weekDay: "Segunda a Quinta", hours: "10:00 - 18:00" },
       { weekDay: "Sexta-feira", hours: "10:00 - 16:00" },
     ],
-    weeklySchedule: [
-      { day: "Segunda-feira", activities: "Consultas nutricionais, Avaliações" },
-      { day: "Terça-feira", activities: "Planejamento alimentar, Consultas" },
-      { day: "Quarta-feira", activities: "Consultas e retornos" },
-      { day: "Quinta-feira", activities: "Orientação nutricional" },
-      { day: "Sexta-feira", activities: "Consultas e acompanhamento" },
-    ],
+    weeklySchedule: {
+      activities: "Consultas nutricionais, Avaliações",
+      image: ["https://plus.unsplash.com/premium_photo-1661766718556-13c2efac1388?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"]
+    },
     about: "Dra. Beatriz Almeida é nutricionista especializada em nutrição clínica e esportiva. Oferece atendimento personalizado para promover saúde e bem-estar através da alimentação.",
     education: [
       "Graduação em Nutrição pela USP",

@@ -48,3 +48,14 @@
     background-color: var(--chakra-colors-brand-primary);
     border-color: var(--chakra-colors-brand-primary);
 }
+
+.masonry-grid {
+    display: flex;
+    width: auto;
+    margin-left: -16px;
+}
+
+.masonry-grid_column {
+    padding-left: 16px;
+    background-clip: padding-box;
+}

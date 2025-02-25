@@ -14,9 +14,9 @@ import {
     Button,
     Icon,
     Link,
-    Dialog,
-    SimpleGrid,
+    DialogTrigger,
 } from "@chakra-ui/react";
+import Masonry from 'react-masonry-css';
 import {
     FaWhatsapp,
     FaInstagram,
@@ -31,7 +31,9 @@ import { useParams } from "next/navigation";
 import Navbar from "@/components/header/navbar";
 import { useColorModeValue } from "@/components/ui/color-mode";
 import { useEffect, useState } from "react";
+import { DialogContent, DialogRoot } from "@/components/ui/dialog";
 export default function InfoProfessional() {
+    const [selectedImage, setSelectedImage] = useState("");
     const [mounted, setMounted] = useState(false);
     const params = useParams();
     const professional = professionals.find((p) => p.id === params.id);
@@ -58,10 +60,19 @@ export default function InfoProfessional() {
         );
     }
 
+        // Add this CSS near your imports
+    const masonryStyles = {
+    display: "flex",
+    marginLeft: "-16px", // gutter size offset
+    width: "auto"
+    };
+
+
     const whatsappLink = `https://wa.me/${professional.phone.replace(/\D/g, "")}`;
 
     return (
         <Box
+            width="full"
             minH="100vh"
             display="flex"
             flexDirection="column"
@@ -73,7 +84,7 @@ export default function InfoProfessional() {
             </Box>
 
             {/* Container principal */}
-            <Container m={12} maxW="container.lg" p={4} flex="1">
+            <Container m={[0,12]} maxW={"fit-content"} p={4} flex="1">
                 <Grid
                     templateColumns={{ base: "1fr", md: "1fr", lg: "repeat(2, 1fr)" }}
                     gap={6}
@@ -122,7 +133,7 @@ export default function InfoProfessional() {
                             </VStack>
 
                             <HStack mt={4} m={3}>
-                                <Button size="xs" colorScheme="teal">
+                                <Button size="xs" colorPalette="teal">
                                     <Link href={whatsappLink}>
                                         <Icon as={FaWhatsapp} boxSize="16px" color="green.500" />
                                     </Link>
@@ -167,79 +178,64 @@ export default function InfoProfessional() {
                     {/* Card 2: Horários & Agenda */}
                     <GridItem colSpan={1}>
                         <VStack align="start" m={4} width="100%">
-                            {/* {selectedImage && (
-                                <Dialog.Root open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
-                                    <Dialog.Content>
-                                        <Dialog.Title>Horário de Atendimento</Dialog.Title>
-                                        <Dialog.Description>
+
+                            <Box width="100%" px={4} py={6}>
+                                <Text fontSize="md" fontWeight="bold" mb={2} color={accentColor}>
+                                    Atividades
+                                </Text>
+                                <Text fontSize="sm" mb={4}>
+                                    {professional.weeklySchedule?.activities}
+                                </Text>
+                                    <DialogRoot placement={"center"} open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}
+                                    >
+                                            <Masonry
+                                                breakpointCols={{
+                                                    default: 3,
+                                                    1024: 2,
+                                                    700: 2,
+                                                    500: 1
+                                                }}
+                                                className="masonry-grid"
+                                                columnClassName="masonry-grid_column"
+                                                style={masonryStyles}
+                                            >
+                                                {professional.weeklySchedule?.image.map((image, index) => (
+                                                    <Box
+                                                        key={index}
+                                                        mb={4}
+                                                        cursor="pointer"
+                                                        onClick={() => setSelectedImage(image)}
+                                                        borderRadius="md"
+                                                        overflow="hidden"
+                                                        transition="all 0.3s"
+                                                        _hover={{
+                                                            transform: "scale(1.02)",
+                                                            boxShadow: "lg",
+                                                        }}
+                                                    >
+                                                        <Image
+                                                            src={image}
+                                                            alt={`Imagem ${index + 1}`}
+                                                            w="100%"
+                                                            h="auto"
+                                                            objectFit="cover"
+                                                            loading="lazy"
+                                                            borderRadius="md"
+                                                        />
+                                                    </Box>
+                                                ))}
+                                            </Masonry>
+                                        <DialogContent
+                                        >
                                             <Image
                                                 src={selectedImage}
-                                                alt="Horário Ampliado"
+                                                alt="Galeria imagem"
                                                 width="100%"
                                                 height="auto"
                                                 objectFit="contain"
                                             />
-                                        </Dialog.Description>
-                                    </Dialog.Content>
-                                </Dialog.Root>
-                            )} */}
-
-                            <Box width="100%">
-                                <Box
-                                    overflowX="auto"
-                                    maxW={{ base: "100%", md: "800px" }}
-                                    mx="auto"
-                                    css={{
-                                        '&::-webkit-scrollbar': {
-                                            height: '6px',
-                                        },
-                                        '&::-webkit-scrollbar-thumb': {
-                                            backgroundColor: 'rgba(0,0,0,0.2)',
-                                            borderRadius: '4px',
-                                        }
-                                    }}
-                                >
-                                    <Box width="100%" px={4} py={6}>
-                                        <Text fontSize="md" fontWeight="bold" mb={2} color="white">
-                                            Atividades
-                                        </Text>
-                                        <Text fontSize="sm" color="white" mb={4}>
-                                            {professional.weeklySchedule?.activities}
-                                        </Text>
-
-                                        <SimpleGrid
-                                            columns={{ base: 2, sm: 3, md: 4 }}
-                                            gap={4}
-                                            justifyItems="center"
-                                        >
-                                            {professional.weeklySchedule?.image.map((image, index) => (
-                                                <Box
-                                                    key={index}
-                                                    w="100%"
-                                                    maxW="250px"
-                                                    borderRadius="md"
-                                                    overflow="hidden"
-                                                    transition="all 0.3s"
-                                                    _hover={{
-                                                        transform: "scale(1.05)",
-                                                        boxShadow: "lg",
-                                                    }}
-                                                >
-                                                    <Image
-                                                        src={image}
-                                                        alt={`Imagem ${index + 1}`}
-                                                        w="100%"
-                                                        h="auto"
-                                                        maxH="300px"
-                                                        objectFit="cover"
-                                                        loading="lazy"
-                                                        borderRadius="md"
-                                                    />
-                                                </Box>
-                                            ))}
-                                        </SimpleGrid>
-                                    </Box>
-                                </Box>
+                                        </DialogContent>
+                                    </DialogRoot>
                             </Box>
                         </VStack>
                     </GridItem>

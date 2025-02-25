@@ -14,7 +14,6 @@ import {
     Button,
     Icon,
     Link,
-    DialogTrigger,
 } from "@chakra-ui/react";
 import Masonry from 'react-masonry-css';
 import {
@@ -33,7 +32,7 @@ import { useColorModeValue } from "@/components/ui/color-mode";
 import { useEffect, useState } from "react";
 import { DialogContent, DialogRoot } from "@/components/ui/dialog";
 export default function InfoProfessional() {
-    const [selectedImage, setSelectedImage] = useState("");
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const [mounted, setMounted] = useState(false);
     const params = useParams();
     const professional = professionals.find((p) => p.id === params.id);
@@ -228,7 +227,7 @@ export default function InfoProfessional() {
                                         <DialogContent
                                         >
                                             <Image
-                                                src={selectedImage}
+                                                src={selectedImage ?? ""}
                                                 alt="Galeria imagem"
                                                 width="100%"
                                                 height="auto"

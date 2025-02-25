@@ -175,7 +175,7 @@ export default function InfoProfessional() {
                     </GridItem>
 
                     {/* Card 2: Horários & Agenda */}
-                    <GridItem colSpan={1}>
+                    <GridItem colSpan=  {1}>
                         <VStack align="start" m={4} width="100%">
 
                             <Box width="100%" px={4} py={6}>
@@ -227,7 +227,7 @@ export default function InfoProfessional() {
                                         <DialogContent
                                         >
                                             <Image
-                                                src={selectedImage ?? ""}
+                                                src={selectedImage ?? undefined}
                                                 alt="Galeria imagem"
                                                 width="100%"
                                                 height="auto"

@@ -8,8 +8,9 @@ import {
   Image,
   HStack,
   useDisclosure,
-  Group,
   Input,
+  IconButton,
+  Collapsible,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { FaSearch } from "react-icons/fa";
@@ -25,30 +26,31 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { SetStateAction, Dispatch, useEffect, useState } from "react";
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter } from "next/navigation";
 import ToggleColorModeButton from "../ToggleColorModeButton";
 import { useColorModeValue } from "../ui/color-mode";
 import { InputGroup } from "@/components/ui/input-group";
-
-/**
- * Navbar estática que usa localStorage para armazenar o usuário.
- * Se o usuário estiver logado, exibe o avatar; caso contrário, exibe o botão "Entrar" (que abre o diálogo).
- */
-
+import { HiOutlineXMark, HiOutlineBars3 } from "react-icons/hi2";
 interface NavbarProps {
   searchTerm?: string;
   setSearchTerm?: Dispatch<SetStateAction<string>>;
 }
 
-
 export default function Navbar({ searchTerm, setSearchTerm }: NavbarProps) {
+  // useDisclosure para o diálogo de login
   const { open, onOpen, onClose } = useDisclosure();
+  // useDisclosure para o menu mobile
+  const {
+    open: mobileIsOpen,
+    onToggle: mobileOnToggle,
+    onClose: mobileOnClose,
+  } = useDisclosure();
   const [loggedUser, setLoggedUser] = useState<any>(null);
   const router = useRouter();
   const pathname = usePathname();
-  const showSearch = pathname === '/dashboard' && loggedUser;
+  const showSearch = pathname === "/dashboard" && loggedUser;
 
-  // Ao montar, recupera o usuário do localStorage
+  // Recupera usuário do localStorage ao montar o componente
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
@@ -62,7 +64,7 @@ export default function Navbar({ searchTerm, setSearchTerm }: NavbarProps) {
     setLoggedUser(null);
   };
 
-  // Define a cor de fundo com base no modo de cor
+  // Define a cor de fundo conforme o modo de cor
   const bgColor = useColorModeValue("gray.50", "brand.dark");
 
   return (
@@ -71,66 +73,76 @@ export default function Navbar({ searchTerm, setSearchTerm }: NavbarProps) {
         {/* LOGO */}
         <Link href="/">
           <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo.jpg-6uwyXwm0Y2S8DA6fXjT6k5b1HybicU.jpeg"
+            src="/assets/logo3.png"
             alt="Conect Saúde Logo"
             borderRadius="full"
-            h={10}
+            width={14}
+            h={14}
           />
         </Link>
-        {/* Barra de pesquisa*/}
+
+        {/* Barra de pesquisa para desktop */}
         {showSearch && (
-          <Box ml={[0,0,0,0,64]}>
+          <Box
+            ml={{ base: 0, md: 64 }}
+            display={{ base: "none", md: "block" }}
+          >
             <InputGroup flex="1" w="30vw" startElement={<FaSearch />}>
               <Input
                 size="lg"
                 placeholder="Buscar por nome, especialidade ou localização..."
                 value={searchTerm}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm?.(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setSearchTerm?.(e.target.value)
+                }
                 bg="gray.50"
                 borderRadius="md"
                 px={6}
                 _placeholder={{ color: "gray.500", fontSize: "15px" }}
                 _hover={{ bg: "gray.100", borderColor: "blue.300" }}
-                _focus={{ bg: "white", borderColor: "blue.400", boxShadow: "outline" }}
+                _focus={{
+                  bg: "white",
+                  borderColor: "blue.400",
+                  boxShadow: "outline",
+                }}
               />
             </InputGroup>
           </Box>
         )}
-        <Group>
 
-          {/* SEÇÃO DA DIREITA */}
-          <Stack direction="row" align="center">
+        <Flex alignItems="center">
+          {/* Itens do menu para desktop */}
+          <HStack m={4} display={{ base: "none", md: "flex" }}>
             <ToggleColorModeButton />
             {loggedUser ? (
-              <HStack p={4} m={4}>
+              <HStack m={4}>
                 <Link href="/dashboard">
                   <Button
                     variant="ghost"
                     color="black"
                     fontFamily="Geist Mono"
                   >
-                    Dashboard
+                    Agendar Consulta
                   </Button>
                 </Link>
-
-                {/* Avatar e botão de sair */}
-                <HStack m={2}>
-                  <Avatar
-                    size="md"
-                    name={loggedUser.name || "Usuário"}
-                    src={loggedUser.avatar || "https://i.pravatar.cc/150?img=3"}
-                    cursor="pointer"
-                    onClick={() => router.push('/profile')}
-                  />
-                  <Button
-                    variant="ghost"
-                    color="black"
-                    fontFamily="Geist Mono"
-                    onClick={handleLogout}
-                  >
-                    Sair
-                  </Button>
-                </HStack>
+                <Avatar
+                  size="md"
+                  name={loggedUser.name || "Usuário"}
+                  src={
+                    loggedUser.avatar ||
+                    "https://i.pravatar.cc/150?img=3"
+                  }
+                  cursor="pointer"
+                  onClick={() => router.push("/profile")}
+                />
+                <Button
+                  variant="ghost"
+                  color="black"
+                  fontFamily="Geist Mono"
+                  onClick={handleLogout}
+                >
+                  Sair
+                </Button>
               </HStack>
             ) : (
               <DialogRoot placement="center" open={open}>
@@ -144,9 +156,16 @@ export default function Navbar({ searchTerm, setSearchTerm }: NavbarProps) {
                     Entrar
                   </Button>
                 </DialogTrigger>
-                <DialogContent bg="gray.800" borderRadius="xl" boxShadow="dark-lg">
+                <DialogContent
+                  bg="gray.800"
+                  borderRadius="xl"
+                  boxShadow="dark-lg"
+                >
                   <DialogHeader>
-                    <DialogTitle color="white" fontFamily="Geist Mono">
+                    <DialogTitle
+                      color="white"
+                      fontFamily="Geist Mono"
+                    >
                       Login
                     </DialogTitle>
                     <DialogCloseTrigger onClick={onClose} color="white" />
@@ -160,9 +179,134 @@ export default function Navbar({ searchTerm, setSearchTerm }: NavbarProps) {
                 </DialogContent>
               </DialogRoot>
             )}
-          </Stack>
-        </Group>
+          </HStack>
+          {/* Botão do menu mobile */}
+          <IconButton
+            size="md"
+            aria-label="Open Menu"
+            display={{ base: "flex", md: "none" }}
+            onClick={mobileOnToggle}
+            ml={2}
+          >
+            {mobileIsOpen ? <HiOutlineXMark /> : <HiOutlineBars3 />}
+          </IconButton>
+        </Flex>
       </Flex>
+
+      {/* Menu mobile colapsável */}
+      <Collapsible.Root open={mobileIsOpen} onOpenChange={mobileOnToggle}>
+        <Collapsible.Content>
+
+          <Box pb={4} display={{ md: "none" }}>
+            <Stack as="nav" m={4}>
+              {showSearch && (
+                <Box>
+                  <InputGroup flex="1" w="full" startElement={<FaSearch />}>
+                    <Input
+                      size="lg"
+                      placeholder="Buscar por nome, especialidade ou localização..."
+                      value={searchTerm}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        setSearchTerm?.(e.target.value)
+                      }
+                      bg="gray.50"
+                      borderRadius="md"
+                      px={6}
+                      _placeholder={{
+                        color: "gray.500",
+                        fontSize: "15px",
+                      }}
+                      _hover={{
+                        bg: "gray.100",
+                        borderColor: "blue.300",
+                      }}
+                      _focus={{
+                        bg: "white",
+                        borderColor: "blue.400",
+                        boxShadow: "outline",
+                      }}
+                    />
+                  </InputGroup>
+                </Box>
+              )}
+
+              {/* Itens do menu mobile */}
+              <ToggleColorModeButton />
+              {loggedUser ? (
+                <>
+                  <Link href="/dashboard">
+                    <Button
+                      variant="ghost"
+                      color="black"
+                      fontFamily="Geist Mono"
+                      onClick={mobileOnClose}
+                      textAlign="center"
+                    >
+                      Agendar Consulta
+                    </Button>
+                  </Link>
+                  <Button
+                    variant="ghost"
+                    color="black"
+                    fontFamily="Geist Mono"
+                    onClick={() => {
+                      mobileOnClose();
+                      router.push("/profile");
+                    }}
+                  >
+                    Perfil
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    color="black"
+                    fontFamily="Geist Mono"
+                    onClick={() => {
+                      handleLogout();
+                      mobileOnClose();
+                    }}
+                  >
+                    Sair
+                  </Button>
+                </>
+              ) : (
+                <DialogRoot placement="center" open={open}>
+                  <DialogTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      color="brand.primary"
+                      fontFamily="Geist Mono"
+                      onClick={onOpen}
+                    >
+                      Entrar
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent
+                    bg="gray.800"
+                    borderRadius="xl"
+                    boxShadow="dark-lg"
+                  >
+                    <DialogHeader>
+                      <DialogTitle
+                        color="white"
+                        fontFamily="Geist Mono"
+                      >
+                        Login
+                      </DialogTitle>
+                      <DialogCloseTrigger onClick={onClose} color="white" />
+                    </DialogHeader>
+                    <DialogBody>
+                      <LoginForm
+                        onClose={onClose}
+                        setLoggedUser={setLoggedUser}
+                      />
+                    </DialogBody>
+                  </DialogContent>
+                </DialogRoot>
+              )}
+            </Stack>
+          </Box>
+        </Collapsible.Content>
+      </Collapsible.Root>
     </Box>
   );
 }
